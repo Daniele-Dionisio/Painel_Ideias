@@ -27,10 +27,9 @@ function App() {
     setNovaIdeia("");
     setErro("");
   }
-
+    //Percorre ideia por ideia até encontrar qual atende a condição e altera o seu estado//
   function alterar(id) {
     setIdeias(
-      //Percorre ideia por ideia até encontrar qual atende a condição e altera o seu estado
       ideias.map((ideia) => {
         if (ideia.id === id) {
           return {
@@ -82,16 +81,13 @@ function App() {
 
       <section id='caixa'>
 
-        //Percorre e separa cada elemento da lista
         {ideias.map((ideia) => (
           <div id='item' key={ideia.id}>
-            //Botão que ao clicar chama a função 'alterar'
             <input type="checkbox"
               checked={ideia.feita}
               onChange={() => alterar(ideia.id)}
             />
             
-            //Verifica o estado da ideia, se for 'TRUE' aplica o CSS
             <span className={ideia.feita ? "concluida" : ""}>
               {ideia.texto}
             </span>
@@ -100,7 +96,6 @@ function App() {
           </div>
         ))}
 
-        //Contador de ideias totais e ideias concluidas
         <footer>
           {`${total} ideias · ${concluidas} concluídas`}
         </footer>
