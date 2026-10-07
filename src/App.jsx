@@ -59,7 +59,10 @@ function App() {
           type="text"
           placeholder="Digite sua ideia"
           value={novaIdeia}
-          onChange={(event) => setNovaIdeia(event.target.value)}
+          onChange={(event) => {
+            setNovaIdeia(event.target.value);
+            setErro("");
+          }}
         />
 
         <button type="submit">
@@ -67,27 +70,31 @@ function App() {
         </button>
       </form>
 
-      {erro && <p>{erro}</p>}
+     <div id='erro'> {erro && <p>{erro}</p>} </div>
 
-      <div>
+      <section id='caixa'>
+
+        
         {ideias.map((ideia) => (
-          <div key={ideia.id}>
+          <div id='item' key={ideia.id}>
             <input type="checkbox"
               checked={ideia.feita}
-              onChange={() => aoAlternarIdeia(ideia.id)}
+              onChange={() => alterar(ideia.id)}
             />
-            <footer>
-              {`${totalIdeias} ideias · ${totalConcluidas} concluídas`}
-            </footer>
 
             <span className={ideia.feita ? "concluida" : ""}>
               {ideia.texto}
             </span>
 
-            <button type="burron" onClick={() => remover(ideia.id)}> ✕ </button>
+             <button type="button" id='BotaoRemover' onClick={() => remover (ideia.id)}> ✕ </button>
+
+           
           </div>
         ))}
-      </div>
+        <footer>
+              {`${total} ideias · ${concluidas} concluídas`}
+            </footer>
+      </section>
 
 
     </>
