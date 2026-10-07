@@ -39,6 +39,11 @@ function App() {
     );
   }
 
+  function remover (id) {
+    setIdeias(
+    ideias.filter((ideia) => ideia.id !== id)
+    )
+  }
 
   return (
     <>
@@ -72,7 +77,7 @@ function App() {
               {ideia.texto}
             </span>
 
-            <button>✕</button>
+            <button type="burron" onClick={()=> remover (ideia.id)}> ✕ </button>
           </div>
         ))}
       </div>
