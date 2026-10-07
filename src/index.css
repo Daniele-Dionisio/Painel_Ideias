@@ -117,7 +117,7 @@ form button:hover {
   border-radius: 10px;
 }
 
-#Item.feita {
+#item.feita {
   border-left-color: var(--ok);
   opacity: 0.75;
 }
