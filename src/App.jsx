@@ -39,11 +39,15 @@ function App() {
     );
   }
 
-  function remover (id) {
+  function remover(id) {
     setIdeias(
-    ideias.filter((ideia) => ideia.id !== id)
+      ideias.filter((ideia) => ideia.id !== id)
     )
   }
+  const total = ideias.length
+  const concluidas = ideias.filter(
+    (ideia) => ideia.feita).length;
+
 
   return (
     <>
@@ -72,12 +76,15 @@ function App() {
               checked={ideia.feita}
               onChange={() => aoAlternarIdeia(ideia.id)}
             />
+            <footer>
+              {`${totalIdeias} ideias · ${totalConcluidas} concluídas`}
+            </footer>
 
             <span className={ideia.feita ? "concluida" : ""}>
               {ideia.texto}
             </span>
 
-            <button type="burron" onClick={()=> remover (ideia.id)}> ✕ </button>
+            <button type="burron" onClick={() => remover(ideia.id)}> ✕ </button>
           </div>
         ))}
       </div>
